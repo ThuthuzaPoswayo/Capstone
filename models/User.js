@@ -3,7 +3,7 @@ import { db } from "../config/index.js";
 class User {
     async fetchUsers(req, res) {
         const strQry = `
-            SELECT name, email, role, phone
+            SELECT *
             FROM Users;
         `;
         try {
@@ -23,9 +23,9 @@ class User {
 
     async fetchUser(req, res) {
         const strQry = `
-            SELECT userID, name, email, role, phone
+            SELECT *
             FROM Users
-            WHERE userID = ?;
+            WHERE user_id = ?;
         `;
         try {
             const [result] = await db.query(strQry, [req.params.id]);
@@ -67,7 +67,7 @@ class User {
         const strQry = `
             UPDATE Users
             SET ?
-            WHERE userID = ?;
+            WHERE user_id = ?;
         `;
         try {
             await db.query(strQry, [data, req.params.id]);
@@ -86,7 +86,7 @@ class User {
     async deleteUser(req, res) {
         const strQry = `
             DELETE FROM Users
-            WHERE userID = ?;
+            WHERE user_id = ?;
         `;
         try {
             await db.query(strQry, [req.params.id]);

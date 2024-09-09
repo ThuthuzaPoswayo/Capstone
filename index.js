@@ -1,23 +1,32 @@
-import express from "express";
-import "dotenv/config"; // Import dotenv with ES module syntax
-import { userRouter } from "./controllers/UserController.js"; // Import your user router/controller
+import express from 'express';
+import 'dotenv/config'; // Import dotenv with ES module syntax
+import { userRouter } from './controllers/UserController.js'; // Import your user router/controller
+import { serviceRouter } from './controllers/ServiceController.js';
+import { bookingsRouter } from './controllers/BookingsController.js'
+import{ reviewsRouter} from "./controllers/ReviewsController.js";
 
 const port = process.env.PORT || 3000;
 const app = express();
 
 // Set up middleware
-app.use(
-  express.static("./static"), // Use relative path to the static directory
-  express.json(),
-  express.urlencoded({ extended: true })
-);
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static('./static')); // Serve static files
 
-// Use the user router
-app.use("/user", userRouter); // Assuming you have routes for /user in UserController.js
+// Use the routers for different routes
+app.use('/user', userRouter); // Routes for user-related actions
+app.use('/services', serviceRouter); // Routes for service-related actions
+app.use('/booking', bookingsRouter); // Routes for booking-related actions
+app.use('/review', reviewsRouter); // Routes for booking-related actions
 
 // Route for the home page
-app.get("/", (req, res) => {
-  res.sendFile("static/html/index.html", { root: "." }); // Use relative path with the root option
+app.get('/', (req, res) => {
+  res.sendFile('static/html/index.html', { root: '.' }); // Serve the home page
+});
+
+// Handle 404 errors
+app.use((req, res) => {
+  res.status(404).send('404 Not Found');
 });
 
 // Listen on the specified port
