@@ -5,17 +5,30 @@ import SignUp from '@/views/SignUp.vue'
 const routes = [
   {
     path: '/',
-    name: 'Login',
-    component: Login
+    name: 'home',
+    component: () => import('@/views/HomeView.vue')
   },
+
   {
     path: '/about',
     name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+    component: () => import('../views/AboutView.vue')
   },
+
+  {
+    path: '/',
+    name: 'services',
+    component: () => import('@/views/ServicesView.vue')
+  },
+
+    {
+    path: '/reach-us',
+    name: 'reach-us',
+    component: () => import('@/views/ContactView.vue')
+  },
+  
+
+
   {
     path: '/signup',
     name: 'Signup',

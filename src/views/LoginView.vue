@@ -1,4 +1,19 @@
 <template>
+  
+</template>
+
+<script>
+export default {
+
+}
+</script>
+
+<style>
+
+</style>
+
+
+<!-- <template>
     <div class="login-container">
       <h1>Login</h1>
       <form @submit.prevent="handleLogin">
@@ -66,4 +81,4 @@
     background-color: #0056b3;
   }
   </style>
-  
+   -->
