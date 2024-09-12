@@ -30,11 +30,11 @@
             <router-link class="nav-link" to="/about">About</router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="/products">Services</router-link>
+            <router-link class="nav-link" to="/services">Services</router-link>
           </li>
           
           <li class="nav-item">
-            <router-link class="nav-link" to="/admin">Reserve</router-link>
+            <router-link class="nav-link" to="/reserve">Reserve</router-link>
           </li>
           <li class="nav-item">
             <router-link class="nav-link" to="/reach-us">Reach Us</router-link>

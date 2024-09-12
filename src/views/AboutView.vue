@@ -10,7 +10,8 @@
         <div class="row align-items-start equal-height-columns">
         
           <div class="col-md-6 text-center mb-4" id="image">
-            <img src="https://thuthuzaposwayo.github.io/All-images/eShop/ytee.png" class="rounded-img img-fluid slide-in">
+            <img src="http://thuthuzaposwayo.github.io/All-images/images/womanowned.png" class="rounded-img img-fluid slide-in">
+            <p>Thutzbeauty is proudly woman-owned</p>
           </div>
 
         
@@ -33,17 +34,11 @@
 
         <div class="row equal-height-columns">
           <div class="col-md-6 text-center mb-4">
-            <div class="image-container">
-              <img id="woman" src="http://thuthuzaposwayo.github.io/All-images/images/womanowned.png" class="rounded-img img-fluid"> 
-              <p>Thutzbeauty is proudly woman-owned</p>
-            </div>
+            
           </div>
 
           <div class="col-md-6 text-center mb-4">
-            <div class="image-container">
-              <img id="vegan" src="http://thuthuzaposwayo.github.io/All-images/images/veganfree.png" class="rounded-img img-fluid">
-              <p>All of our products are vegan-friendly and free of animal cruelty</p>
-            </div>
+           
           </div>
         </div>
       </div>

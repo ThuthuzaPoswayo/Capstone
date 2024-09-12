@@ -16,7 +16,7 @@ const routes = [
   },
 
   {
-    path: '/',
+    path: '/services',
     name: 'services',
     component: () => import('@/views/ServicesView.vue')
   },
@@ -26,8 +26,17 @@ const routes = [
     name: 'reach-us',
     component: () => import('@/views/ContactView.vue')
   },
+    {
+    path: '/reserve',
+    name: 'reserve',
+    component: () => import('@/views/ReserveView.vue')
+  },
   
-
+  {
+    path: '/singleproducts',
+    name: 'singleproducts',
+    component: () => import('@/views/SinglePage.vue')
+  },
 
   {
     path: '/signup',
