@@ -136,29 +136,38 @@ export default createStore({
     },
 
     // ===== LOGIN =======
-    async login({ commit }, payload) {
+    async login(context, payload) {
       try {
-        const { msg, result, token } = await (await axios.post(`${apiURL}/user/login`, payload)).data
+        const { msg, result, token } = await (await axios.post(`${apiURL}user/login`, payload)).data
         if (result) {
-          toast.success(`${msg}😎`, {
-            autoClose: 2000,
-            position: toast.POSITION.BOTTOM_CENTER
+          toast.success(`${msg}`, {
+            autoClose: 3000,
           })
-          commit('setUser', result)
+          context.commit('setUser', {
+            msg,
+            result
+          })
+          cookies.set('LegitUser', {token, msg, result})
+          useToken(token)
+          router.push({ name: 'services' })
+          toast.success('Select to book!'), {
+            autoClose: 10000,
+          }
         } else {
           toast.error(`${msg}`, {
-            autoClose: 2000,
-            position: toast.POSITION.BOTTOM_CENTER
+            autoClose: 3000
           })
         }
       } catch (e) {
         toast.error(`${e.message}`, {
-          autoClose: 2000,
-          position: toast.POSITION.BOTTOM_CENTER
+          autoClose: 3000
         })
       }
     },
   },
   modules: {}
 })
+
+
+
 

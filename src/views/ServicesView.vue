@@ -63,7 +63,7 @@
                     <p class="card-text">{{ service.description }}</p> -->
   
                     <button>
-                        <router-link :to="`/singleproducts/${service.service_id}`" class="link-no-decoration">View</router-link>
+                        <router-link :to="`/singleproducts/${service.service_id}`" class="link-no-decoration">View More</router-link>
                     </button>
                   </div>
                 </div>
@@ -184,13 +184,18 @@ section {
 }
 
 .card {
-    height: 500px;
+    height: 400px;
     width: 250px;
     margin-top: 20px;
 }
 
 button {
     background-color: #ff69b4;
+}
+
+.card-img-top {
+height:200px;
+width:200px;
 }
 </style>
 

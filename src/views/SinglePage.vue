@@ -2,10 +2,24 @@
     <div>
       <h1 class="service-heading">Service Details</h1>
       
-      <Card v-if="service" id="service-view">
-        <section>
-          <div class="card">
-            <img :src="service.images_url" class="card-img-top" alt="Service Image" />
+      <Card id="servicesview">
+
+
+<template v-slot:cardHeader>
+        <section v-if="services && services.length">
+          <div>
+            class="prod" 
+            v-for="service in services" 
+            :key="service.service_id"
+          >
+            <div class="row row-cols-1 row-cols-md-2 g-4 card-proj">
+              <div class="col">
+                <div class="card">
+                  <img 
+                    :src="service.images_url" 
+                    class="card-img-top" 
+                    alt="Service Image"
+                  />
             <div class="card-body">
               <h2 class="card-title">{{ service.service_name }}</h2>
               <p class="card-text">Price: R{{ service.price }}</p>
@@ -14,7 +28,14 @@
               <button @click="bookService">Book {{ service.service_name }}</button>
             </div>
           </div>
+        </div>
+          </div>
+        </div>
         </section>
+        </template> 
+        
+        
+        
       </Card>
     </div>
   </template>

@@ -1,14 +1,20 @@
 <template>
   <body>
-  <div class="container">
-    <div class="column">
-      <img src="https://thuthuzaposwayo.github.io/All-images/Capstone/home.png" alt="Home Image" class="round-image">
+    <div class="container">
+      <div class="column">
+        <img src="https://thuthuzaposwayo.github.io/All-images/Capstone/home.png" alt="Home Image" class="round-image">
+      </div>
+      <div class="column">
+        <h2>Welcome to ThutzBeauty, your #1 beauty plug!</h2>
+      </div>
     </div>
-    <div class="column">
-      <h2>Welcome to ThutzBeauty, your #1 beauty plug!</h2>
-    </div>
-  </div>
-</body>
+    <div>
+      <h3>Get started to book for your favourite service now!</h3>
+      <button class="login-button">
+        <router-link :to="`/login/`" class="link-no-decoration">Login</router-link>
+      </button>
+    </div>  
+  </body>
 </template>
 
 <script>
@@ -44,6 +50,8 @@ body {
   border: 5px solid transparent;
   box-shadow: 0 0 15px 5px rgba(255, 105, 180, 0.75); 
   object-fit: cover;
+  margin-bottom: 5rem;
+  margin-top: 5rem;
 }
 
 h2 {
@@ -51,6 +59,31 @@ h2 {
   color: #171616;
   margin: 20px;
   font-weight: bolder;
+}
+
+h3 {
+  font-weight: bold;
+  font-size: 2.5rem;
+  text-align: center;
+  color: #333;
+  margin-top: 20px;
+}
+
+.login-button {
+  background-color: hotpink;
+  font-family: 'Cursive', sans-serif;
+  font-size: 1.2rem;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  align-content: center;
+}
+
+.login-button:hover {
+  background-color: #ff69b4; 
 }
 
 @media (max-width: 768px) {

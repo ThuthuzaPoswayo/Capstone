@@ -1,19 +1,7 @@
+
+
+
 <template>
-  
-</template>
-
-<script>
-export default {
-
-}
-</script>
-
-<style>
-
-</style>
-
-
-<!-- <template>
     <div class="login-container">
       <h1>Login</h1>
       <form @submit.prevent="handleLogin">
@@ -27,7 +15,7 @@ export default {
         </div>
         <button type="submit">Login</button>
       </form>
-      <p>Don't have an account? <button @click="goToSignup">Sign Up</button></p>
+      <p>Don't have an account? <button> <router-link :to="`/signup/`" class="link-no-decoration">Sign Up</router-link></button></p>
     </div>
   </template>
   
@@ -41,12 +29,12 @@ export default {
     },
     methods: {
       handleLogin() {
-        // Handle login logic, e.g., call an API to log in
+     
         console.log('Logging in with:', this.email, this.password);
-        // After successful login, you can redirect to another page or show a success message
+
       },
       goToSignup() {
-        // Redirect to the signup page
+      
         this.$router.push({ name: 'Signup' });
       }
     }
@@ -81,4 +69,4 @@ export default {
     background-color: #0056b3;
   }
   </style>
-   -->
+  
