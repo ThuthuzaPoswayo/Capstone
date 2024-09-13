@@ -1,173 +1,198 @@
-import { createStore } from 'vuex'
-import axios from 'axios'
-import { toast } from 'vue3-toastify'
-import 'vue3-toastify/dist/index.css'
+import { createStore } from "vuex";
+import axios from "axios";
+import { toast } from "vue3-toastify";
+import "vue3-toastify/dist/index.css";
 
-const apiURL = 'https://thutzbooking.onrender.com'
+const apiURL = "https://thutzbooking.onrender.com";
 
 export default createStore({
   state: {
     user: null,
     services: null,
+    service: null,
     booking: null,
     review: null,
   },
   getters: {},
   mutations: {
     setUser(state, payload) {
-      state.user = payload
+      state.user = payload;
     },
     setServices(state, payload) {
-      state.services = payload
+      state.services = payload;
+    },
+    setService(state, payload) {
+      state.service = payload;
     },
     setBooking(state, payload) {
-      state.booking = payload
+      state.booking = payload;
     },
     setReview(state, payload) {
-      state.review = payload
+      state.review = payload;
     },
   },
   actions: {
     // ===== Users =====
     async getUsers({ commit }) {
       try {
-        let { data } = await axios.get(`${apiURL}/user`)
-        commit('setUser', data)
+        let { data } = await axios.get(`${apiURL}/user`);
+        commit("setUser", data);
       } catch (e) {
         toast.error(`${e.message}`, {
           autoClose: 2000,
-          position: toast.POSITION.BOTTOM_CENTER
-        })
+          position: toast.POSITION.BOTTOM_CENTER,
+        });
       }
       console.log(getUsers);
-      
     },
     async fetchUser({ commit }, id) {
       try {
-        const { result, msg } = await (await axios.get(`${apiURL}/user/${id}`)).data
+        const { result, msg } = await (
+          await axios.get(`${apiURL}/user/${id}`)
+        ).data;
         if (result) {
-          commit('setUser', result)
+          commit("setUser", result);
         } else {
           toast.error(`${msg}`, {
             autoClose: 2000,
-            position: toast.POSITION.BOTTOM_CENTER
-          })
+            position: toast.POSITION.BOTTOM_CENTER,
+          });
         }
       } catch (e) {
         toast.error(`${e.message}`, {
           autoClose: 2000,
-          position: toast.POSITION.BOTTOM_CENTER
-        })
+          position: toast.POSITION.BOTTOM_CENTER,
+        });
       }
     },
 
     // ===== Services =====
     async getServices({ commit }) {
       try {
-        const { data: {results}} = await axios.get(`${apiURL}/services`)
+        const {
+          data: { results },
+        } = await axios.get(`${apiURL}/services`);
         console.log(results);
+
+        commit("setServices", results);
+      } catch (e) {
+        toast.error(`${e.message}`, {
+          autoClose: 2000,
+          position: toast.POSITION.BOTTOM_CENTER,
+        });
+      }
+    },
+    // async getService({ commit }, id) {
+    //   try {
+    //     const response = await axios.get(`${apiURL}/services/${id}`);
+    //     let {data} = response
+    //     let {result} = data
+    //     console.log(result);
         
-        commit('setServices', results)
-      } catch (e) {
-        toast.error(`${e.message}`, {
-          autoClose: 2000,
-          position: toast.POSITION.BOTTOM_CENTER
-        })
-      }
-    },
-    async getService({ commit }, id) {
-      try {
-        const { data } = await axios.get(`${apiURL}/services/${id}`)
-        commit('setServices', data)
-      } catch (e) {
-        toast.error(`${e.message}`, {
-          autoClose: 2000,
-          position: toast.POSITION.BOTTOM_CENTER
-        })
-      }
-    },
+    //     commit("setService", result);
+    //   } catch (e) {
+    //     toast.error(`${e.message}`, {
+    //       autoClose: 2000,
+    //       position: toast.POSITION.BOTTOM_CENTER,
+    //     });
+    //   }
+    // },
 
     // ===== Bookings =====
-    async getBookings({ commit }) {
+
+    async getService({ commit }, id) {
       try {
-        const { data } = await axios.get(`${apiURL}/booking`)
-        commit('setBooking', data)
+        const { data } = await axios.get(`${apiURL}/services/${id}`);
+        const { result } = data;
+        commit("setService", result); // Save the fetched service data to the state
+        return result; // Return result for further usage
       } catch (e) {
         toast.error(`${e.message}`, {
           autoClose: 2000,
-          position: toast.POSITION.BOTTOM_CENTER
-        })
+          position: toast.POSITION.BOTTOM_CENTER,
+        });
+      }
+    }
+,    
+
+    async getBookings({ commit }) {
+      try {
+        const { data } = await axios.get(`${apiURL}/booking`);
+        commit("setBooking", data);
+      } catch (e) {
+        toast.error(`${e.message}`, {
+          autoClose: 2000,
+          position: toast.POSITION.BOTTOM_CENTER,
+        });
       }
     },
     async getBooking({ commit }, id) {
       try {
-        const { data } = await axios.get(`${apiURL}/booking/${id}`)
-        commit('setBooking', data)
+        const { data } = await axios.get(`${apiURL}/booking/${id}`);
+        commit("setBooking", data);
       } catch (e) {
         toast.error(`${e.message}`, {
           autoClose: 2000,
-          position: toast.POSITION.BOTTOM_CENTER
-        })
+          position: toast.POSITION.BOTTOM_CENTER,
+        });
       }
     },
 
     // ===== Reviews =====
     async getReviews({ commit }) {
       try {
-        const { data } = await axios.get(`${apiURL}/review`)
-        commit('setReview', data)
+        const { data } = await axios.get(`${apiURL}/review`);
+        commit("setReview", data);
       } catch (e) {
         toast.error(`${e.message}`, {
           autoClose: 2000,
-          position: toast.POSITION.BOTTOM_CENTER
-        })
+          position: toast.POSITION.BOTTOM_CENTER,
+        });
       }
     },
     async getReview({ commit }, id) {
       try {
-        const { data } = await axios.get(`${apiURL}/review/${id}`)
-        commit('setReview', data)
+        const { data } = await axios.get(`${apiURL}/review/${id}`);
+        commit("setReview", data);
       } catch (e) {
         toast.error(`${e.message}`, {
           autoClose: 2000,
-          position: toast.POSITION.BOTTOM_CENTER
-        })
+          position: toast.POSITION.BOTTOM_CENTER,
+        });
       }
     },
 
     // ===== LOGIN =======
     async login(context, payload) {
       try {
-        const { msg, result, token } = await (await axios.post(`${apiURL}user/login`, payload)).data
+        const { msg, result, token } = await (
+          await axios.post(`${apiURL}user/login`, payload)
+        ).data;
         if (result) {
           toast.success(`${msg}`, {
             autoClose: 3000,
-          })
-          context.commit('setUser', {
+          });
+          context.commit("setUser", {
             msg,
-            result
-          })
-          cookies.set('LegitUser', {token, msg, result})
-          useToken(token)
-          router.push({ name: 'services' })
-          toast.success('Select to book!'), {
-            autoClose: 10000,
-          }
+            result,
+          });
+          cookies.set("LegitUser", { token, msg, result });
+          useToken(token);
+          router.push({ name: "services" });
+          toast.success("Select to book!"),
+            {
+              autoClose: 10000,
+            };
         } else {
           toast.error(`${msg}`, {
-            autoClose: 3000
-          })
+            autoClose: 3000,
+          });
         }
       } catch (e) {
         toast.error(`${e.message}`, {
-          autoClose: 3000
-        })
+          autoClose: 3000,
+        });
       }
     },
   },
-  modules: {}
-})
-
-
-
-
+});

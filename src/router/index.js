@@ -33,7 +33,7 @@ const routes = [
   },
   
   {
-    path: '/singleproducts',
+    path: '/singleproducts/:id',
     name: 'singleproducts',
     component: () => import('@/views/SinglePage.vue')
   },
@@ -43,7 +43,11 @@ const routes = [
     name: 'login',
     component: () => import('@/views/LoginView.vue'),
   },
-
+  {
+    path: '/admin',
+    name: 'admin',
+    component: () => import('@/views/AdminView.vue'),
+  },
   {
     path: '/signup',
     name: 'signup',

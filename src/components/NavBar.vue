@@ -32,9 +32,12 @@
           <li class="nav-item">
             <router-link class="nav-link" to="/services">Services</router-link>
           </li>
-          
+
           <li class="nav-item">
             <router-link class="nav-link" to="/reserve">Reserve</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link" to="/admin">Admin</router-link>
           </li>
           <li class="nav-item">
             <router-link class="nav-link" to="/reach-us">Reach Us</router-link>

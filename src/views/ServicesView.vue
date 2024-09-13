@@ -1,44 +1,9 @@
-<!-- <template>
-    <h1 class="services-heading"> Our Services </h1>
-    
-    <Card id="servicesview">
-        <template v-slot:cardHeader>
-            <section>
-                <div class="prod" v-for="service in $store.state.services" :key="service.service_id">
-                    <div class="row row-cols-1 row-cols-md-2 g-4 card-proj">
-                        <div class="col">
-                            <div class="card">
-                                <img :src="service.imageUrl" class="card-img-top" alt="Service Image">
-                                <div class="card-body">
-                                    <h2 class="card-title"> {{ service.service_name }} </h2>
-                                    <p class="card-text"> R{{ service.price }} </p>
-                                    <p class="card-text"> Duration: {{ service.duration }} minutes </p>
-                                    <p class="card-text"> {{ service.description }} </p>
-  
-                                    <button> 
-                                      <router-link :to="{name:'single-service', params:{id:service.service_id}}" class="link-no-decoration"> 
-                                        View {{ service.service_name }} 
-                                      </router-link>
-                                    </button>
-                    
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </template>
-    </Card> 
-  
-</template> -->
+
 
 <template>
     <h1 class="services-heading">Our Services</h1>
 
-    <div class="controls">
-    <button @click="sortServicesByPrice">Sort</button>
-    <button @click="filterByPriceRange(100, 500)">Filter</button>
-  </div>
+    
     
     <Card id="servicesview">
       <template v-slot:cardHeader>
@@ -126,16 +91,7 @@ export default {
   },
 
  
-    // Method to sort services by price
-    sortServicesByPrice() {
-      this.sortAscending = !this.sortAscending; // Toggle sort order
-      this.$store.commit('setSortedServices', this.sortAscending); // Commit the sorted state
-    },
-    
-    // Method to filter services within a price range
-    filterByPriceRange(minPrice, maxPrice) {
-      this.priceFilterRange = [minPrice, maxPrice];
-    },
+  
 
 
 
@@ -198,5 +154,3 @@ height:200px;
 width:200px;
 }
 </style>
-
-  
